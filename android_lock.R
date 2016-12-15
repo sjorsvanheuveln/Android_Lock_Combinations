@@ -1,8 +1,9 @@
-#android lock
-#SvH 26-11-2015
-
+# Android Lock Combinations
+# SvH 26-11-2015
+# Description: This script calculates the number of different lock combinations on the Android Swipe lock given a certain key length.
 # LC: Use <<- for global variables
 
+#### Functions ####
 get_nb <- function(x,y,lock){
   #returns coordinates of neighbors
   nb_coor <- list()
@@ -16,6 +17,7 @@ get_nb <- function(x,y,lock){
   return(nb_coor)
 }
 recurse <- function(x,y,lock){
+  #main brute force function
   lock[x,y] <- NA; #lock <- initiate(lock)
   cat(x,y,"level = ",cur_level,'\n')
   print(lock);cat('\n'); #Sys.sleep(0.03)
@@ -29,6 +31,7 @@ recurse <- function(x,y,lock){
   #add 1 to total when max_level is reached
 }
 
+#### MAIN ####
 lock <- matrix(, nrow = 5, ncol = 5); lock[2:4,2:4] <- 0;lock
 total = 0
 max_level = 4 #length of password
